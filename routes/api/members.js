@@ -18,7 +18,7 @@ router.get('/:id', (req,res)=>{
     }
 });
 
-//create member
+//add member
 // we can use the same rout as long as they are different methods, i used / for the get request above
 router.post('/',(req,res)=>{
    const newMember = {
@@ -34,10 +34,12 @@ router.post('/',(req,res)=>{
    }
 
    members.push(newMember);
-   res.json(members)
+   // comment this put to redirect using handlebar templates
+   res.json(members);
+   //res.redirect('/');
 });
 
-//update member
+//delete member
 router.delete('/:id', (req,res)=>{
     const found = members.some(member => member.id === parseInt(req.params.id));
 
@@ -51,7 +53,7 @@ router.delete('/:id', (req,res)=>{
 });
 
 
-//delete member
+//update member
 router.put('/:id', (req,res)=>{
     const found = members.some(member => member.id === parseInt(req.params.id));
 
